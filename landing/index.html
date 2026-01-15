@@ -76,9 +76,13 @@
         .logo {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--accent);
+            font-weight: 500;
+            color: var(--fg);
             margin-bottom: 1rem;
+        }
+
+        .logo .slash {
+            color: var(--accent);
         }
 
         header h1 {
@@ -203,57 +207,43 @@
             border-radius: 4px;
         }
 
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.25rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .feature-card h3 {
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .feature-card p {
-            font-size: 0.8125rem;
-            color: var(--muted);
-        }
-
-        /* Modules Grid */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        /* Features List */
+        .features-list {
+            display: flex;
+            flex-direction: column;
             gap: 0.75rem;
         }
 
-        .module-tag {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 0.75rem 1rem;
-            font-size: 0.8125rem;
-            backdrop-filter: blur(10px);
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
         }
 
-        .module-tag strong {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 0.125rem;
+        .feature-item strong {
+            color: var(--fg);
+            min-width: 160px;
         }
 
-        .module-tag span {
+        .feature-item span {
             color: var(--muted);
-            font-size: 0.75rem;
+        }
+
+        /* Modules List */
+        .modules-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem 2rem;
+            font-size: 0.8125rem;
+        }
+
+        .module-item {
+            color: var(--muted);
+        }
+
+        .module-item strong {
+            color: var(--fg);
+            font-weight: 500;
         }
 
         /* Output Example */
@@ -339,11 +329,7 @@
                 padding: 2rem 1.25rem;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modules-grid {
+            .modules-list {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -373,7 +359,7 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">sench</div>
+            <div class="logo"><span class="slash">/</span>sench</div>
             <h1>Competitive Intelligence Sub-Agent</h1>
             <p>Analyze any company website in seconds. Returns structured data for Claude Code, Codex & Cursor.</p>
             <div class="badges">
@@ -401,41 +387,29 @@
 
         <section>
             <h2 data-num="01">Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Sub-Agent Architecture</h3>
-                    <p>Works inside your AI coding assistant. No API keys needed.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Playwright Scraping</h3>
-                    <p>Full browser rendering for modern JavaScript sites.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>12 Analysis Modules</h3>
-                    <p>Identity, funding, GTM, competitors, SWOT and more.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Structured Output</h3>
-                    <p>Markdown tables ready for analysis and comparison.</p>
-                </div>
+            <div class="features-list">
+                <div class="feature-item"><strong>Sub-Agent</strong><span>Works inside Claude Code, Codex, Cursor. No API keys.</span></div>
+                <div class="feature-item"><strong>Playwright Scraping</strong><span>Full browser rendering for JavaScript sites.</span></div>
+                <div class="feature-item"><strong>12 Modules</strong><span>Identity, funding, GTM, competitors, SWOT...</span></div>
+                <div class="feature-item"><strong>Markdown Output</strong><span>Structured tables ready for analysis.</span></div>
             </div>
         </section>
 
         <section>
             <h2 data-num="02">Modules</h2>
-            <div class="modules-grid">
-                <div class="module-tag"><strong>Identity</strong><span>Company basics</span></div>
-                <div class="module-tag"><strong>Funding</strong><span>Rounds & investors</span></div>
-                <div class="module-tag"><strong>Founders</strong><span>Team & leadership</span></div>
-                <div class="module-tag"><strong>Product</strong><span>Features & pricing</span></div>
-                <div class="module-tag"><strong>Market</strong><span>Value proposition</span></div>
-                <div class="module-tag"><strong>Competitors</strong><span>Landscape</span></div>
-                <div class="module-tag"><strong>GTM</strong><span>Go-to-market</span></div>
-                <div class="module-tag"><strong>Marketing</strong><span>Content & social</span></div>
-                <div class="module-tag"><strong>ICP</strong><span>Customer profile</span></div>
-                <div class="module-tag"><strong>News</strong><span>Recent updates</span></div>
-                <div class="module-tag"><strong>Finance</strong><span>Financial signals</span></div>
-                <div class="module-tag"><strong>Legal</strong><span>Compliance</span></div>
+            <div class="modules-list">
+                <div class="module-item"><strong>Identity</strong> basics</div>
+                <div class="module-item"><strong>Funding</strong> rounds</div>
+                <div class="module-item"><strong>Founders</strong> team</div>
+                <div class="module-item"><strong>Product</strong> features</div>
+                <div class="module-item"><strong>Market</strong> value prop</div>
+                <div class="module-item"><strong>Competitors</strong> landscape</div>
+                <div class="module-item"><strong>GTM</strong> go-to-market</div>
+                <div class="module-item"><strong>Marketing</strong> content</div>
+                <div class="module-item"><strong>ICP</strong> customers</div>
+                <div class="module-item"><strong>News</strong> updates</div>
+                <div class="module-item"><strong>Finance</strong> signals</div>
+                <div class="module-item"><strong>Legal</strong> compliance</div>
             </div>
         </section>
 
