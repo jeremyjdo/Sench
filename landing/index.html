@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sench - Competitive Intelligence CLI</title>
-    <meta name="description" content="Analyze any competitor in seconds. AI-powered competitive intelligence from the command line.">
+    <title>Sench - Competitive Intelligence Sub-Agent</title>
+    <meta name="description" content="Analyze any competitor in seconds. Sub-agent for Claude Code, Codex & Cursor.">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Sench - Competitive Intelligence CLI">
-    <meta property="og:description" content="Analyze any competitor in seconds. AI-powered competitive intelligence from the command line.">
+    <meta property="og:title" content="Sench - Competitive Intelligence Sub-Agent">
+    <meta property="og:description" content="Analyze any competitor in seconds. Sub-agent for Claude Code, Codex & Cursor.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sench.ai">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #0a0a0a;
-            --fg: #fafafa;
-            --muted: #6b6b6b;
-            --muted-light: #8a8a8a;
-            --code-bg: #141414;
-            --border: #222;
-            --green: #4ade80;
+            --bg: #fdfcf9;
+            --fg: #2d2a24;
+            --muted: #6b6560;
+            --muted-light: #8a857e;
+            --accent: #8b7355;
+            --accent-light: #a68b6a;
+            --code-bg: rgba(139, 115, 85, 0.08);
+            --border: rgba(139, 115, 85, 0.15);
+            --card-bg: rgba(255, 255, 255, 0.85);
         }
 
         * {
@@ -35,215 +37,284 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
+            background-image: url('img/back 1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--fg);
             min-height: 100vh;
             line-height: 1.6;
         }
 
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(253, 252, 249, 0.88);
+            pointer-events: none;
+            z-index: -1;
+        }
+
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 6rem 3rem;
+            padding: 4rem 2rem;
         }
 
-        /* Hero Section - Aligned Left */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 8rem;
+        /* Header */
+        header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        .hero h1 {
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            font-size: 1.5rem;
+        .logo {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.25rem;
             font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 .slash {
-            color: var(--muted);
-        }
-
-        .hero p {
-            font-size: 1.125rem;
-            color: var(--muted-light);
-            max-width: 480px;
-            line-height: 1.7;
-        }
-
-        .platforms {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-            font-size: 0.875rem;
-        }
-
-        .platforms > span:first-child {
-            color: var(--muted);
-            margin-right: 0.5rem;
-        }
-
-        .platforms .platform {
-            color: var(--fg);
-            font-weight: 500;
-        }
-
-        .platforms .separator {
-            color: var(--muted);
-        }
-
-        /* Install Section */
-        .install .install-box {
+            color: var(--accent);
             margin-bottom: 1rem;
         }
 
-        .install-box {
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--fg);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        .badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
             background: var(--code-bg);
+            border-radius: 100px;
+            color: var(--muted);
+        }
+
+        /* Install */
+        .install-section {
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 1.5rem 2rem;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .install-section label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .install-box {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--code-bg);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
         }
 
         .install-box code {
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            font-size: 0.9375rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
             color: var(--fg);
         }
 
         .install-box button {
-            background: transparent;
-            color: var(--muted-light);
-            border: 1px solid var(--border);
+            background: var(--accent);
+            color: #fff;
+            border: none;
             padding: 0.5rem 1rem;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.8125rem;
             font-weight: 500;
-            transition: all 0.2s;
+            transition: background 0.2s;
         }
 
         .install-box button:hover {
-            color: var(--fg);
-            border-color: var(--muted);
+            background: var(--accent-light);
         }
 
-        .install-box button.copied {
-            color: var(--green);
-            border-color: var(--green);
+        /* Usage */
+        .usage-block {
+            background: var(--fg);
+            color: #f5f3ef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8125rem;
+            line-height: 2;
+            backdrop-filter: blur(10px);
+        }
+
+        .usage-block .comment {
+            color: #9a958e;
+        }
+
+        .usage-block .cmd {
+            color: #d4a574;
         }
 
         /* Sections */
         section {
-            margin-bottom: 6rem;
+            margin-bottom: 3rem;
         }
 
         section h2 {
-            font-size: 0.8125rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--fg);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        /* Code Block */
-        .code-block {
-            background: var(--code-bg);
+        section h2::before {
+            content: attr(data-num);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            background: rgba(37, 99, 235, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 2rem;
-            font-family: 'SF Mono', Monaco, monospace;
-            font-size: 0.875rem;
-            line-height: 2;
+            padding: 1.25rem;
+            backdrop-filter: blur(10px);
         }
 
-        .code-block .line {
-            display: block;
-        }
-
-        .code-block .comment {
-            color: var(--muted);
-        }
-
-        .code-block .flag {
-            color: var(--muted-light);
-        }
-
-        /* Modules - Simple List */
-        .modules-list {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0 2rem;
-        }
-
-        .module-item {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .module-item h3 {
+        .feature-card h3 {
             font-size: 0.875rem;
             font-weight: 500;
             margin-bottom: 0.25rem;
         }
 
-        .module-item span {
-            font-size: 0.75rem;
+        .feature-card p {
+            font-size: 0.8125rem;
             color: var(--muted);
         }
 
-        /* Features - Minimal */
-        .features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        /* Modules Grid */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: baseline;
-            gap: 1.5rem;
-            padding-bottom: 1.5rem;
+        .module-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            font-size: 0.8125rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .module-tag strong {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.125rem;
+        }
+
+        .module-tag span {
+            color: var(--muted);
+            font-size: 0.75rem;
+        }
+
+        /* Output Example */
+        .output-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .output-header {
+            background: var(--code-bg);
+            padding: 0.75rem 1.25rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8125rem;
+            color: var(--muted);
             border-bottom: 1px solid var(--border);
         }
 
-        .feature-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        .output-content {
+            padding: 1.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            line-height: 1.8;
+            max-height: 500px;
+            overflow-y: auto;
         }
 
-        .feature-icon {
-            font-family: 'SF Mono', Monaco, monospace;
-            font-size: 1rem;
-            color: var(--muted);
-            flex-shrink: 0;
-            width: 1.5rem;
-        }
-
-        .feature-item h3 {
-            font-size: 1rem;
-            font-weight: 500;
-            flex-shrink: 0;
-            width: 140px;
-        }
-
-        .feature-item p {
+        .output-content .h1 {
             font-size: 0.875rem;
-            color: var(--muted-light);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .output-content .h2 {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--fg);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .output-content .meta {
+            color: var(--muted);
+        }
+
+        .output-content .table {
+            margin: 0.5rem 0;
+            color: var(--muted);
+        }
+
+        .output-content .key {
+            color: var(--accent);
         }
 
         /* Footer */
         footer {
-            padding-top: 4rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
             border-top: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -253,52 +324,38 @@
         }
 
         footer a {
-            color: var(--muted-light);
+            color: var(--accent);
             text-decoration: none;
-            margin-left: 2rem;
-            transition: color 0.2s;
+            margin-left: 1.5rem;
         }
 
         footer a:hover {
-            color: var(--fg);
+            text-decoration: underline;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 3rem 1.5rem;
+                padding: 2rem 1.25rem;
             }
 
-            .hero {
-                margin-bottom: 5rem;
+            .features-grid {
+                grid-template-columns: 1fr;
             }
 
-            .hero h1 {
-                font-size: 1.25rem;
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .install-box {
                 flex-direction: column;
                 gap: 1rem;
-                align-items: flex-start;
+                align-items: stretch;
             }
 
             .install-box code {
-                font-size: 0.8125rem;
+                font-size: 0.75rem;
                 word-break: break-all;
-            }
-
-            .modules-list {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0 1rem;
-            }
-
-            .feature-item {
-                flex-wrap: wrap;
-            }
-
-            .feature-item h3 {
-                width: auto;
             }
 
             footer {
@@ -308,254 +365,130 @@
             }
 
             footer a {
-                margin: 0 1rem;
+                margin: 0 0.75rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="hero">
-            <h1><span class="slash">/</span>sench</h1>
-            <p>Competitive intelligence from the command line. Analyze any company in seconds using AI.</p>
-            <div class="platforms">
-                <span>Available on</span>
-                <span class="platform">Claude Code</span>
-                <span class="separator">/</span>
-                <span class="platform">Codex</span>
-                <span class="separator">/</span>
-                <span class="platform">Cursor</span>
+        <header>
+            <div class="logo">sench</div>
+            <h1>Competitive Intelligence Sub-Agent</h1>
+            <p>Analyze any company website in seconds. Returns structured data for Claude Code, Codex & Cursor.</p>
+            <div class="badges">
+                <span class="badge">Claude Code</span>
+                <span class="badge">Codex</span>
+                <span class="badge">Cursor</span>
             </div>
         </header>
 
-        <section class="install">
+        <div class="install-section">
+            <label>Installation</label>
             <div class="install-box">
                 <code id="install-code">curl -fsSL https://sench.ai/install | bash</code>
                 <button onclick="copyInstall()">Copy</button>
             </div>
-            <div class="code-block">
-                <span class="line"><span class="comment"># Analyze any company</span></span>
-                <span class="line">/sench stripe.com</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment"># Specific modules</span></span>
-                <span class="line">/sench notion.com <span class="flag">--gtm --funding</span></span>
-            </div>
-        </section>
+        </div>
+
+        <div class="usage-block">
+            <div><span class="comment"># Full analysis</span></div>
+            <div><span class="cmd">/sench</span> stripe.com</div>
+            <div></div>
+            <div><span class="comment"># Specific modules</span></div>
+            <div><span class="cmd">/sench</span> notion.com <span class="comment">--gtm --funding</span></div>
+        </div>
 
         <section>
-            <h2>Features</h2>
-            <div class="features-list">
-                <div class="feature-item">
-                    <span class="feature-icon">&gt;</span>
-                    <h3>Sub-agent</h3>
-                    <p>Works with Claude Code, Codex, Cursor</p>
+            <h2 data-num="01">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Sub-Agent Architecture</h3>
+                    <p>Works inside your AI coding assistant. No API keys needed.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">#</span>
-                    <h3>Web Scraping</h3>
-                    <p>Playwright-powered site analysis</p>
+                <div class="feature-card">
+                    <h3>Playwright Scraping</h3>
+                    <p>Full browser rendering for modern JavaScript sites.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">*</span>
-                    <h3>12 Modules</h3>
-                    <p>Identity, funding, GTM, competitors and more</p>
+                <div class="feature-card">
+                    <h3>12 Analysis Modules</h3>
+                    <p>Identity, funding, GTM, competitors, SWOT and more.</p>
                 </div>
-                <div class="feature-item">
-                    <span class="feature-icon">~</span>
-                    <h3>Fast</h3>
-                    <p>Complete analysis in under 2 minutes</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Modules</h2>
-            <div class="modules-list">
-                <div class="module-item">
-                    <h3>Identity</h3>
-                    <span>Company basics</span>
-                </div>
-                <div class="module-item">
-                    <h3>Funding</h3>
-                    <span>Rounds & investors</span>
-                </div>
-                <div class="module-item">
-                    <h3>Founders</h3>
-                    <span>Team & leadership</span>
-                </div>
-                <div class="module-item">
-                    <h3>Product</h3>
-                    <span>Features & pricing</span>
-                </div>
-                <div class="module-item">
-                    <h3>Market</h3>
-                    <span>Value proposition</span>
-                </div>
-                <div class="module-item">
-                    <h3>Competitors</h3>
-                    <span>Landscape</span>
-                </div>
-                <div class="module-item">
-                    <h3>GTM</h3>
-                    <span>Go-to-market</span>
-                </div>
-                <div class="module-item">
-                    <h3>Marketing</h3>
-                    <span>Content & social</span>
-                </div>
-                <div class="module-item">
-                    <h3>ICP</h3>
-                    <span>Customer profile</span>
-                </div>
-                <div class="module-item">
-                    <h3>News</h3>
-                    <span>Recent updates</span>
-                </div>
-                <div class="module-item">
-                    <h3>Finance</h3>
-                    <span>Financial signals</span>
-                </div>
-                <div class="module-item">
-                    <h3>Legal</h3>
-                    <span>Compliance</span>
+                <div class="feature-card">
+                    <h3>Structured Output</h3>
+                    <p>Markdown tables ready for analysis and comparison.</p>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2>Example: /sench stripe.com</h2>
-            <div class="code-block example-output">
-                <span class="line"><span class="comment"># Fiche Concurrent : Stripe</span></span>
-                <span class="line"></span>
-                <span class="line">> Date d'analyse : 15/01/2025</span>
-                <span class="line">> Source principale : https://stripe.com/</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">---</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">## 1. Identite</span></span>
-                <span class="line"></span>
-                <span class="line">| Critere | Detail |</span>
-                <span class="line">|---------|--------|</span>
-                <span class="line">| <span class="flag">Nom</span> | Stripe, Inc. |</span>
-                <span class="line">| <span class="flag">Site web</span> | https://stripe.com/ |</span>
-                <span class="line">| <span class="flag">Date de creation</span> | 2010 |</span>
-                <span class="line">| <span class="flag">Siege social</span> | San Francisco, California, USA |</span>
-                <span class="line">| <span class="flag">Pays d'operation</span> | 46+ pays |</span>
-                <span class="line">| <span class="flag">Segment</span> | Fintech / Paiements / Infrastructure |</span>
-                <span class="line">| <span class="flag">Positionnement</span> | B2B / B2D (Business to Developer) |</span>
-                <span class="line"></span>
-                <span class="line"><span class="flag">Reseaux sociaux</span> :</span>
-                <span class="line">- LinkedIn: linkedin.com/company/stripe (1.2M followers)</span>
-                <span class="line">- Twitter/X: @stripe (850K followers)</span>
-                <span class="line">- GitHub: github.com/stripe (15K+ repos)</span>
-                <span class="line">- YouTube: youtube.com/stripe</span>
-                <span class="line">- Blog: stripe.com/blog</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">---</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">## 2. Funding & Valorisation</span></span>
-                <span class="line"></span>
-                <span class="line">| Critere | Detail |</span>
-                <span class="line">|---------|--------|</span>
-                <span class="line">| <span class="flag">Montant total leve</span> | $8.7 milliards |</span>
-                <span class="line">| <span class="flag">Derniere levee</span> | Series I - $6.5B (Mars 2023) |</span>
-                <span class="line">| <span class="flag">Valorisation</span> | $50 milliards (2023) |</span>
-                <span class="line">| <span class="flag">Investisseurs cles</span> | Sequoia, a16z, General Catalyst, Tiger Global |</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">---</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">## 3. Fondateurs & Equipe</span></span>
-                <span class="line"></span>
-                <span class="line">| Nom | Role | Background |</span>
-                <span class="line">|-----|------|------------|</span>
-                <span class="line">| Patrick Collison | CEO & Co-fondateur | Ex-Auctomatic, MIT dropout |</span>
-                <span class="line">| John Collison | President & Co-fondateur | Plus jeune milliardaire self-made |</span>
-                <span class="line"></span>
-                <span class="line">- <span class="flag">Taille equipe</span> : 8,000+ employes</span>
-                <span class="line">- <span class="flag">Executives cles</span> : Claire Hughes Johnson (COO), David Singleton (CTO)</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">---</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">## 4. Product Breakdown</span></span>
-                <span class="line"></span>
-                <span class="line">| Feature | Description | Differenciant ? |</span>
-                <span class="line">|---------|-------------|-----------------|</span>
-                <span class="line">| Payments | Traitement paiements en ligne | Non |</span>
-                <span class="line">| Billing | Gestion abonnements & factures | Non |</span>
-                <span class="line">| Connect | Paiements pour marketplaces | Oui |</span>
-                <span class="line">| Atlas | Creation entreprise Delaware | Oui |</span>
-                <span class="line">| Radar | Detection fraude ML | Oui |</span>
-                <span class="line">| Terminal | Paiements physiques | Non |</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">---</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">## 5. Analyse GTM</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="flag">Modele</span> : Product-Led Growth + Enterprise Sales</span>
-                <span class="line"></span>
-                <span class="line">| Canal | Actif |</span>
-                <span class="line">|-------|-------|</span>
-                <span class="line">| Documentation API | [x] |</span>
-                <span class="line">| Developer evangelism | [x] |</span>
-                <span class="line">| Partenariats (Shopify, Salesforce) | [x] |</span>
-                <span class="line">| SEO/Content | [x] |</span>
-                <span class="line">| Events (Sessions) | [x] |</span>
-                <span class="line"></span>
-                <span class="line"><span class="flag">Pricing</span> :</span>
-                <span class="line">- Transaction: 2.9% + $0.30</span>
-                <span class="line">- Volume discounts Enterprise</span>
-                <span class="line">- Premium: Atlas ($500), Radar ($0.05/txn)</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">---</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">## 6. Competitors</span></span>
-                <span class="line"></span>
-                <span class="line">| Concurrent | Similarite | Menace |</span>
-                <span class="line">|------------|------------|--------|</span>
-                <span class="line">| Adyen | Directe | Haute |</span>
-                <span class="line">| Square (Block) | Directe | Haute |</span>
-                <span class="line">| PayPal/Braintree | Directe | Moyenne |</span>
-                <span class="line">| Checkout.com | Directe | Moyenne |</span>
-                <span class="line">| Worldpay | Indirecte | Faible |</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">---</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">## 7. Synthese SWOT</span></span>
-                <span class="line"></span>
-                <span class="line">| Forces | Faiblesses |</span>
-                <span class="line">|--------|------------|</span>
-                <span class="line">| API best-in-class | Pricing eleve vs concurrents |</span>
-                <span class="line">| Documentation exemplaire | Support client variable |</span>
-                <span class="line">| Ecosysteme complet | Complexite pour non-devs |</span>
-                <span class="line">| Brand recognition devs | Dependance US market |</span>
-                <span class="line"></span>
-                <span class="line">| Opportunites | Menaces |</span>
-                <span class="line">|--------------|---------|</span>
-                <span class="line">| Embedded finance | Adyen croissance enterprise |</span>
-                <span class="line">| Crypto/Web3 | Regulation fintech |</span>
-                <span class="line">| Expansion APAC | Open banking |</span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">---</span></span>
-                <span class="line"></span>
-                <span class="line"><span class="comment">## 8. Actualites Recentes</span></span>
-                <span class="line"></span>
-                <span class="line">| Date | Evenement | Impact |</span>
-                <span class="line">|------|-----------|--------|</span>
-                <span class="line">| Jan 2025 | Lancement Stripe Orchestration | Fort |</span>
-                <span class="line">| Dec 2024 | Expansion Moyen-Orient (UAE, Saudi) | Fort |</span>
-                <span class="line">| Nov 2024 | Partenariat Amazon Buy with Prime | Fort |</span>
-                <span class="line">| Oct 2024 | Stripe Sessions 2024 (SF) | Moyen |</span>
-                <span class="line">| Sep 2024 | Acquisition Bridge (stablecoins) | Fort |</span>
-                <span class="line">| Mar 2023 | Series I - $6.5B a $50B | Fort |</span>
-                <span class="line"></span>
+            <h2 data-num="02">Modules</h2>
+            <div class="modules-grid">
+                <div class="module-tag"><strong>Identity</strong><span>Company basics</span></div>
+                <div class="module-tag"><strong>Funding</strong><span>Rounds & investors</span></div>
+                <div class="module-tag"><strong>Founders</strong><span>Team & leadership</span></div>
+                <div class="module-tag"><strong>Product</strong><span>Features & pricing</span></div>
+                <div class="module-tag"><strong>Market</strong><span>Value proposition</span></div>
+                <div class="module-tag"><strong>Competitors</strong><span>Landscape</span></div>
+                <div class="module-tag"><strong>GTM</strong><span>Go-to-market</span></div>
+                <div class="module-tag"><strong>Marketing</strong><span>Content & social</span></div>
+                <div class="module-tag"><strong>ICP</strong><span>Customer profile</span></div>
+                <div class="module-tag"><strong>News</strong><span>Recent updates</span></div>
+                <div class="module-tag"><strong>Finance</strong><span>Financial signals</span></div>
+                <div class="module-tag"><strong>Legal</strong><span>Compliance</span></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 data-num="03">Example Output</h2>
+            <div class="output-section">
+                <div class="output-header">/sench stripe.com</div>
+                <div class="output-content">
+                    <div class="h1"># Fiche Concurrent : Stripe</div>
+                    <div class="meta">> Date : 15/01/2025</div>
+                    <div class="meta">> Source : https://stripe.com/</div>
+
+                    <div class="h2">## 1. Identite</div>
+                    <div class="table">| Critere | Detail |</div>
+                    <div class="table">|---------|--------|</div>
+                    <div class="table">| <span class="key">Nom</span> | Stripe, Inc. |</div>
+                    <div class="table">| <span class="key">Date creation</span> | 2010 |</div>
+                    <div class="table">| <span class="key">Siege</span> | San Francisco, CA |</div>
+                    <div class="table">| <span class="key">Segment</span> | Fintech / Payments |</div>
+
+                    <div class="h2">## 2. Reseaux Sociaux</div>
+                    <div>- LinkedIn: 1.2M followers</div>
+                    <div>- Twitter/X: @stripe (850K)</div>
+                    <div>- GitHub: github.com/stripe</div>
+
+                    <div class="h2">## 3. Funding</div>
+                    <div class="table">| <span class="key">Total leve</span> | $8.7B |</div>
+                    <div class="table">| <span class="key">Valorisation</span> | $50B (2023) |</div>
+                    <div class="table">| <span class="key">Investisseurs</span> | Sequoia, a16z, Tiger |</div>
+
+                    <div class="h2">## 4. Fondateurs</div>
+                    <div class="table">| Patrick Collison | CEO |</div>
+                    <div class="table">| John Collison | President |</div>
+                    <div>- Equipe: 8,000+ employes</div>
+
+                    <div class="h2">## 5. GTM</div>
+                    <div>- Modele: Product-Led Growth + Enterprise</div>
+                    <div>- Pricing: 2.9% + $0.30 / transaction</div>
+                    <div>- Canaux: Docs, Dev evangelism, Partnerships</div>
+
+                    <div class="h2">## 6. Actualites</div>
+                    <div class="table">| Jan 2025 | Stripe Orchestration | Fort |</div>
+                    <div class="table">| Dec 2024 | Expansion Moyen-Orient | Fort |</div>
+                    <div class="table">| Sep 2024 | Acquisition Bridge | Fort |</div>
+                </div>
             </div>
         </section>
 
         <footer>
             <span>sench.ai</span>
             <nav>
-                <a href="https://github.com/sench-ai/sench-cli">GitHub</a>
-                <a href="https://github.com/sench-ai/sench-cli/issues">Issues</a>
+                <a href="https://github.com/jeremyjdo/Sench">GitHub</a>
+                <a href="https://github.com/jeremyjdo/Sench/issues">Issues</a>
             </nav>
         </footer>
     </div>
@@ -565,11 +498,9 @@
             const code = document.getElementById('install-code').textContent;
             navigator.clipboard.writeText(code).then(() => {
                 const btn = document.querySelector('.install-box button');
-                btn.textContent = 'Copied';
-                btn.classList.add('copied');
+                btn.textContent = 'Copied!';
                 setTimeout(() => {
                     btn.textContent = 'Copy';
-                    btn.classList.remove('copied');
                 }, 2000);
             });
         }
