@@ -1,8 +1,1 @@
-{
-  "skills": {
-    "sench": {
-      "description": "Competitive intelligence - Analyze any company from their website",
-      "path": ".claude/skills/sench.md"
-    }
-  }
-}
+{}

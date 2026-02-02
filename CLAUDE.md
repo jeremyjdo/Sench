@@ -1,106 +1,83 @@
-# Sench - Instructions Claude Code
+# CLAUDE.md - Sench Project Guidelines
 
-## Projet
+## Project Overview
 
-**Sench** est un sub-agent de competitive intelligence pour **Claude Code**, **Codex** et **Cursor**. Il scrape des sites web d'entreprises et retourne le contenu + prompts d'analyse pour que l'IA hôte effectue l'analyse.
+Sench provides competitive intelligence skills for AI agents (Claude Code, Codex, Cursor).
 
-## Architecture
+## Skills
 
-Sench est un **sub-agent** (pas un CLI standalone) :
-1. Scrape le site web avec Playwright
-2. Extrait le contenu, les liens sociaux, prend un screenshot
-3. Retourne le contenu + prompts formatés
-4. L'IA hôte (Claude Code/Codex/Cursor) analyse le contenu
+- `/sench-startup` - Full competitive intelligence report
+- `/sench-team` - Team structure and founder analysis
 
-**Pas de clé API requise** - l'analyse est faite par l'assistant de code.
+## Skill Improvement Guidelines
 
-## Stack Technique
+When user feedback indicates issues with skill output, always update the SKILL.md accordingly:
 
-| Layer | Tech |
-|-------|------|
-| CLI | argparse |
-| Scraping | Playwright |
+### Data Quality
+- **Exact counts**: Always report exact numbers found (e.g., "19 employees" not "10-49")
+- **Sources required**: Every report must include LinkedIn URL + website in Sources section
+- **Never invent**: Use "Not found" / "Non trouvé" for missing data
 
-## Structure du projet
+### Output Format
+- **Language parameter**: Support `--fr` and `--en` flags for output language
+- **Default language**: English
+- **Single file**: One markdown report per analysis
+
+### Research Thoroughness
+- Search multiple LinkedIn queries to maximize employee discovery
+- Cross-reference company page count with found profiles
+- Include compliance/legal roles in team searches
+
+## Folder Structure
 
 ```
-sench/
-├── sench/
-│   ├── __init__.py         # Exports
-│   ├── __main__.py         # Entry point
-│   ├── cli.py              # CLI principal
-│   ├── core/
-│   │   └── scraper.py      # Scraper combiné
-│   ├── modules/
-│   │   └── base.py         # ModuleKey, prompts
-│   ├── prompts/
-│   │   └── templates/      # Prompts par module (.md)
-│   └── tools/
-│       ├── page_scraper.py # Extraction contenu
-│       ├── screenshot.py   # Capture screenshot
-│       └── social_scraper.py # Liens sociaux
-├── landing/                # Landing page
-├── install.sh              # Script d'installation
-├── pyproject.toml
-└── README.md
+skills/
+  sench-startup/
+    SKILL.md
+    README.md
+  sench-team/
+    SKILL.md
+    README.md
+examples/
+  ornikar_analysis.md
+  1point6_team.md
+landing-page/
+  index.html
+  sench-startup.html
+  sench-team.html
 ```
 
-## Conventions
+## Common Issues & Fixes
 
-### Git
-- Branches : `feature/`, `fix/`, `chore/`
-- Commits : Conventional commits (feat:, fix:, docs:, etc.)
+| Issue | Fix |
+|-------|-----|
+| Employee count shows range instead of exact | Count all unique profiles found |
+| Missing sources | Always add LinkedIn + Website to Sources |
+| Output in wrong language | Check for --fr/--en flag, default to English |
+| Incomplete team list | Run ALL search queries in Phase 2 |
 
-### Code
-- Python 3.11+
-- Type hints obligatoires
-- Docstrings pour fonctions publiques
+## Report Quality Guidelines
 
-## Commandes rapides
+### Product Section
+- Include **Core Product Overview** with narrative description
+- List **Major Product Components** (numbered list with descriptions)
+- **Pricing** must include source URL and date
+- **ICP** should be detailed with tables: Age, Status, Location, Budget, Pain Points, Motivation
+- Include both **Primary** and **Secondary** ICPs
 
-```bash
-# Run CLI
-python -m sench stripe.com
+### Market Section
+- Start with **Market Segments** tree diagram showing company position
+- **Market Sizing** table must include Source column
+- Add **Key Market Data** with specific numbers
+- **Market Trends** should indicate Tailwind/Headwind impact
 
-# Run avec module spécifique
-python -m sench stripe.com --gtm
+## Documentation Maintenance
 
-# Plusieurs modules
-python -m sench stripe.com --funding --founders
+**IMPORTANT:** Always update README.md when making changes to:
+- Skill names or commands
+- Output format or sections
+- Language options (--fr, --en)
+- Installation instructions
+- Example files
 
-# Sans screenshot
-python -m sench stripe.com --no-screenshot
-
-# Version
-python -m sench --version
-```
-
-## Modules d'analyse
-
-| Module | Flag | Description |
-|--------|------|-------------|
-| identity | `--identity` | Identité entreprise |
-| funding | `--funding` | Levées de fonds |
-| founders | `--founders` | Fondateurs et équipe |
-| finance | `--finance` | Signaux financiers |
-| icp | `--icp` | Ideal Customer Profile |
-| product | `--product` | Produits et features |
-| market | `--market` | Proposition de valeur |
-| competitors | `--competitors` | Concurrents |
-| gtm | `--gtm` | Go-to-Market |
-| marketing | `--marketing` | Marketing et contenu |
-| news | `--news` | Actualités |
-| legal | `--legal` | Contexte légal |
-
-Sans flag, tous les modules sont exécutés.
-
-## Installation
-
-```bash
-# Via curl
-curl -fsSL https://sench.ai/install | bash
-
-# Manuel
-pip install playwright
-playwright install chromium
-```
+Keep README.md in sync with actual skill capabilities.
