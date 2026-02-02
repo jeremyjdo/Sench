@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sench.vercel.app/sitemap.xml
