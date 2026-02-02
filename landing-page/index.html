@@ -91,12 +91,18 @@
 
         .logo {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
-            line-height: 1.2;
-            letter-spacing: 0.05em;
+            font-size: 0.5rem;
+            line-height: 1.1;
+            letter-spacing: 0;
             color: var(--color-text);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             white-space: pre;
+        }
+
+        @media (max-width: 640px) {
+            .logo {
+                font-size: 0.35rem;
+            }
         }
 
         header .subtitle {
@@ -292,9 +298,14 @@
 <body>
     <div class="container">
         <header>
-<pre class="logo">┌─────────────────┐
-│  <span style="font-weight:600">/sench</span>        │
-└─────────────────┘</pre>
+<pre class="logo">┌───────────────────────────────────────────────────────────────────────────────┐
+│  ███████╗███████╗███╗   ██╗ ██████╗██╗  ██╗                                   │
+│  ██╔════╝██╔════╝████╗  ██║██╔════╝██║  ██║                                   │
+│  ███████╗█████╗  ██╔██╗ ██║██║     ███████║                                   │
+│  ╚════██║██╔══╝  ██║╚██╗██║██║     ██╔══██║                                   │
+│  ███████║███████╗██║ ╚████║╚██████╗██║  ██║                                   │
+│  ╚══════╝╚══════╝╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝                                   │
+└───────────────────────────────────────────────────────────────────────────────┘</pre>
             <p class="subtitle">Competitive Intelligence Skills for AI Agents</p>
             <div class="meta">
                 <span class="badge">Claude Code</span>
