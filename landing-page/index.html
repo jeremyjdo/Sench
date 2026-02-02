@@ -89,6 +89,16 @@
             margin-bottom: 0.75rem;
         }
 
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+            color: var(--color-text);
+            margin-bottom: 1.25rem;
+            white-space: pre;
+        }
+
         header .subtitle {
             font-size: 1.125rem;
             color: var(--color-text-muted);
@@ -282,7 +292,9 @@
 <body>
     <div class="container">
         <header>
-            <h1>Sench</h1>
+<pre class="logo">┌─────────────────┐
+│  <span style="font-weight:600">/sench</span>        │
+└─────────────────┘</pre>
             <p class="subtitle">Competitive Intelligence Skills for AI Agents</p>
             <div class="meta">
                 <span class="badge">Claude Code</span>
