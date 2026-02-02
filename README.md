@@ -37,6 +37,22 @@ npx skills add https://github.com/jeremyjdo/Sench --skill sench-team
 
 **Output:** `{company}_team.md` with employee list by department, founder deep dives, hiring signals.
 
+### /sench-market
+
+Market definition & opportunity mapping for venture design.
+
+```bash
+npx skills add https://github.com/jeremyjdo/Sench --skill sench-market
+```
+
+```
+/sench-market employee benefits
+/sench-market EV charging infrastructure
+/sench-market regulatory report automation --fr
+```
+
+**Output:** `{market}_opportunity_map.md` with value chain, opportunity grid, segments, adjacent markets, competitive landscape, international benchmarks.
+
 ## Language
 
 Default output is English. Add `--fr` for French output.
@@ -55,6 +71,7 @@ Default output is English. Add `--fr` for French output.
 See [examples/](examples/) for sample outputs:
 - [ornikar_analysis.md](examples/ornikar_analysis.md)
 - [1point6_team.md](examples/1point6_team.md)
+- [regulatory_reporting_opportunity_map.md](examples/regulatory_reporting_opportunity_map.md)
 
 ## License
 
