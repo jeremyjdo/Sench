@@ -8,20 +8,20 @@ Creates comprehensive opportunity maps that serve as the top funnel for venture 
 
 ## Philosophy
 
-**Think wide before thinking right.**
+**Scope broadly, filter later.**
 
-- Favor exhaustiveness over precision
-- Avoid early judgments on attractiveness or feasibility
-- Structure exploration using value chains
-- Make assumptions explicit
-- Delay convergence deliberately
+- Prioritize coverage over early precision
+- Reserve judgment on viability until scoping is complete
+- Use value chains as exploration scaffolds
+- Document assumptions explicitly
+- Resist premature focus
 
 ## Usage
 
 ```
-/sench-market employee benefits
-/sench-market EV charging infrastructure
-/sench-market regulatory report automation --fr
+/sench-market pet insurance
+/sench-market vertical farming
+/sench-market regulatory reporting --fr
 ```
 
 ## Output

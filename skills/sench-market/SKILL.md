@@ -17,13 +17,13 @@ Comprehensive market opportunity mapping for venture design. Think wide before t
 
 ## Philosophy
 
-**Think wide before thinking right.**
+**Scope broadly, filter later.**
 
-- Favor exhaustiveness over precision
-- Avoid early judgments on attractiveness or feasibility
-- Structure exploration using value chains
-- Make assumptions explicit
-- Delay convergence deliberately
+- Prioritize coverage over early precision
+- Reserve judgment on viability until scoping is complete
+- Use value chains as exploration scaffolds
+- Document assumptions explicitly
+- Resist premature focus
 
 ## Workflow
 

@@ -46,9 +46,9 @@ npx skills add https://github.com/jeremyjdo/Sench --skill sench-market
 ```
 
 ```
-/sench-market employee benefits
-/sench-market EV charging infrastructure
-/sench-market regulatory report automation --fr
+/sench-market pet insurance
+/sench-market vertical farming
+/sench-market regulatory reporting --fr
 ```
 
 **Output:** `{market}_opportunity_map.md` with value chain, opportunity grid, segments, adjacent markets, competitive landscape, international benchmarks.
