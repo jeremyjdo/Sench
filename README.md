@@ -69,6 +69,22 @@ npx skills add https://github.com/jeremyjdo/Sench --skill sench-valuechain
 
 **Output:** `{market}_valuechain.md` with visual chain map, step-by-step actor analysis, margin distribution, frictions, opportunity matrix.
 
+### /sench-competitive-landscape
+
+Competitive landscape analysis with dual focus for venture design.
+
+```bash
+npx skills add https://github.com/jeremyjdo/Sench --skill sench-competitive-landscape
+```
+
+```
+/sench-competitive-landscape expense management
+/sench-competitive-landscape B2B payments
+/sench-competitive-landscape fleet telematics --fr
+```
+
+**Output:** `{segment}_landscape.md` with market structure, tiered competitor mapping, value gap matrix, international benchmarks, pattern synthesis.
+
 ## Language
 
 Default output is English. Add `--fr` for French output.
@@ -89,6 +105,7 @@ See [examples/](examples/) for sample outputs:
 - [1point6_team.md](examples/1point6_team.md)
 - [regulatory_reporting_opportunity_map.md](examples/regulatory_reporting_opportunity_map.md)
 - [luxury_resale_valuechain.md](examples/luxury_resale_valuechain.md)
+- [expense_management_landscape.md](examples/expense_management_landscape.md)
 
 ## License
 
