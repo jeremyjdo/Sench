@@ -51,7 +51,23 @@ npx skills add https://github.com/jeremyjdo/Sench --skill sench-market
 /sench-market regulatory reporting --fr
 ```
 
-**Output:** `{market}_opportunity_map.md` with value chain, opportunity grid, segments, adjacent markets, competitive landscape, international benchmarks.
+**Output:** `{market}_opportunity_map.md` with opportunity grid, segments, adjacent markets, competitive landscape, international benchmarks.
+
+### /sench-valuechain
+
+Value chain decomposition and analysis.
+
+```bash
+npx skills add https://github.com/jeremyjdo/Sench --skill sench-valuechain
+```
+
+```
+/sench-valuechain carbon credits
+/sench-valuechain luxury resale
+/sench-valuechain clinical trials --fr
+```
+
+**Output:** `{market}_valuechain.md` with visual chain map, step-by-step actor analysis, margin distribution, frictions, opportunity matrix.
 
 ## Language
 
@@ -72,6 +88,7 @@ See [examples/](examples/) for sample outputs:
 - [ornikar_analysis.md](examples/ornikar_analysis.md)
 - [1point6_team.md](examples/1point6_team.md)
 - [regulatory_reporting_opportunity_map.md](examples/regulatory_reporting_opportunity_map.md)
+- [luxury_resale_valuechain.md](examples/luxury_resale_valuechain.md)
 
 ## License
 
