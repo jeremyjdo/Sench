@@ -32,7 +32,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -42,7 +42,6 @@
             --color-bg: #ffffff;
             --color-bg-alt: #f9fafb;
             --color-accent: #374151;
-            --font-serif: 'Source Serif 4', Georgia, serif;
             --font-sans: 'Inter', -apple-system, sans-serif;
             --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
         }
@@ -50,7 +49,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-serif);
+            font-family: var(--font-sans);
             font-size: 17px;
             line-height: 1.75;
             color: var(--color-text);
@@ -211,12 +210,10 @@
         }
 
         .output-content {
-            padding: 1.25rem;
+            padding: 1rem;
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            line-height: 1.8;
-            max-height: 400px;
-            overflow-y: auto;
+            line-height: 1.7;
             color: var(--color-text-muted);
         }
 

@@ -32,7 +32,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -42,7 +42,6 @@
             --color-bg: #ffffff;
             --color-bg-alt: #f9fafb;
             --color-accent: #374151;
-            --font-serif: 'Source Serif 4', Georgia, serif;
             --font-sans: 'Inter', -apple-system, sans-serif;
             --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
         }
@@ -50,9 +49,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: var(--font-serif);
-            font-size: 17px;
-            line-height: 1.75;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.6;
             color: var(--color-text);
             background: var(--color-bg);
             -webkit-font-smoothing: antialiased;
@@ -65,7 +64,6 @@
         }
 
         .back {
-            font-family: var(--font-sans);
             font-size: 0.875rem;
             color: var(--color-text-muted);
             text-decoration: none;
@@ -80,7 +78,7 @@
 
         header {
             text-align: left;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         header h1 {
@@ -94,7 +92,7 @@
         header h1 .slash { color: var(--color-text-muted); }
 
         header .subtitle {
-            font-size: 1.125rem;
+            font-size: 1rem;
             color: var(--color-text-muted);
             font-weight: 400;
         }
@@ -102,54 +100,16 @@
         hr {
             border: none;
             border-top: 1px solid var(--color-border);
-            margin: 2.5rem 0;
+            margin: 2rem 0;
         }
 
         .section-title {
-            font-family: var(--font-sans);
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             color: var(--color-text-muted);
             margin-bottom: 1rem;
-        }
-
-        /* Dual Focus */
-        .dual-focus {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .focus-card {
-            background: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 1.25rem;
-        }
-
-        .focus-card h3 {
-            font-family: var(--font-sans);
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .focus-card ul {
-            font-family: var(--font-sans);
-            font-size: 0.8125rem;
-            color: var(--color-text-muted);
-            list-style: none;
-        }
-
-        .focus-card li {
-            padding: 0.2rem 0;
-        }
-
-        .focus-card li::before {
-            content: "→ ";
-            color: var(--color-accent);
         }
 
         /* Install */
@@ -160,7 +120,7 @@
             background: var(--color-bg-alt);
             border: 1px solid var(--color-border);
             border-radius: 8px;
-            padding: 1rem 1.25rem;
+            padding: 0.875rem 1rem;
         }
 
         .install-box code {
@@ -170,14 +130,13 @@
         }
 
         .install-box button {
-            font-family: var(--font-sans);
             background: var(--color-accent);
             color: #fff;
             border: none;
             padding: 0.5rem 1rem;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.8125rem;
+            font-size: 0.875rem;
             font-weight: 500;
             transition: background 0.15s;
         }
@@ -189,10 +148,10 @@
             background: var(--color-text);
             color: #f5f3ef;
             border-radius: 8px;
-            padding: 1.25rem 1.5rem;
+            padding: 1rem 1.25rem;
             font-family: var(--font-mono);
-            font-size: 0.8125rem;
-            line-height: 2;
+            font-size: 0.75rem;
+            line-height: 1.8;
         }
 
         .usage-block .comment { color: #9a958e; }
@@ -206,9 +165,8 @@
         }
 
         .module-item {
-            font-family: var(--font-sans);
-            font-size: 0.8125rem;
-            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            padding: 0.5rem;
             background: var(--color-bg-alt);
             border: 1px solid var(--color-border);
             border-radius: 6px;
@@ -222,7 +180,7 @@
         }
 
         .module-item span {
-            font-size: 0.6875rem;
+            font-size: 0.75rem;
             color: var(--color-text-muted);
         }
 
@@ -236,18 +194,18 @@
 
         .output-header {
             background: var(--color-bg);
-            padding: 0.75rem 1.25rem;
+            padding: 0.75rem 1rem;
             font-family: var(--font-mono);
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             color: var(--color-text-muted);
             border-bottom: 1px solid var(--color-border);
         }
 
         .output-content {
-            padding: 1.25rem;
+            padding: 1rem;
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            line-height: 1.8;
+            line-height: 1.7;
             color: var(--color-text-muted);
         }
 
@@ -259,7 +217,7 @@
         }
 
         .output-content .h2 {
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--color-text);
             margin-top: 1rem;
@@ -277,7 +235,7 @@
         .output-content .key { color: var(--color-accent); }
 
         .output-content .part-header {
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--color-text);
             margin-top: 1.5rem;
@@ -289,8 +247,7 @@
         footer {
             margin-top: 3rem;
             text-align: center;
-            font-family: var(--font-sans);
-            font-size: 0.8125rem;
+            font-size: 0.875rem;
             color: var(--color-text-muted);
         }
 
@@ -310,14 +267,12 @@
         @media (max-width: 640px) {
             .container { padding: 3rem 1.5rem; }
             .modules-grid { grid-template-columns: repeat(2, 1fr); }
-            .dual-focus { grid-template-columns: 1fr; }
             .install-box {
                 flex-direction: column;
                 gap: 1rem;
                 align-items: stretch;
                 text-align: center;
             }
-            .install-box code { font-size: 0.65rem; }
         }
     </style>
 </head>
@@ -329,30 +284,6 @@
             <h1><span class="slash">/</span>sench-competitive-landscape</h1>
             <p class="subtitle">Competitive landscape analysis with dual focus.</p>
         </header>
-
-        <hr>
-
-        <div class="section-title">Dual Focus</div>
-        <div class="dual-focus">
-            <div class="focus-card">
-                <h3>Direct Competition</h3>
-                <ul>
-                    <li>Market structure per segment</li>
-                    <li>Key player profiles</li>
-                    <li>Competitive intensity mapping</li>
-                    <li>Value gap identification</li>
-                </ul>
-            </div>
-            <div class="focus-card">
-                <h3>International Benchmarks</h3>
-                <ul>
-                    <li>Market maturity comparison</li>
-                    <li>Inspirational players</li>
-                    <li>Pattern recognition</li>
-                    <li>Funding signals</li>
-                </ul>
-            </div>
-        </div>
 
         <hr>
 
