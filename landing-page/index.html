@@ -295,8 +295,50 @@
         }
 
         @media (max-width: 640px) {
+            body {
+                display: block;
+            }
+
             .container {
-                padding: 3rem 1.5rem;
+                padding: 2rem 1rem;
+            }
+
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .lang-switch {
+                align-self: flex-start;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            header .subtitle {
+                font-size: 0.875rem;
+            }
+
+            .skill-card {
+                padding: 0.875rem 1rem;
+            }
+
+            .skill-card-title {
+                font-size: 0.75rem;
+                flex-wrap: wrap;
+            }
+
+            .skill-card-title .cmd {
+                word-break: break-all;
+            }
+
+            .skill-card-desc {
+                font-size: 0.8125rem;
+            }
+
+            .module-tag {
+                font-size: 0.625rem;
             }
 
             .feature-item {
@@ -306,6 +348,14 @@
 
             .feature-item strong {
                 min-width: auto;
+            }
+
+            footer {
+                margin-top: 2rem;
+            }
+
+            footer a {
+                margin: 0 0.5rem;
             }
         }
     </style>
