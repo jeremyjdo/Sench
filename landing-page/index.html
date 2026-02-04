@@ -477,15 +477,21 @@
             localStorage.setItem('sench-lang', lang);
         }
 
-        // Generate fake install counts per skill (10-160) and store in localStorage
-        const skills = ['competitive-landscape', 'startup', 'team', 'market', 'valuechain'];
+        // Generate fake install counts per skill with weighted ranges
+        const skillRanges = {
+            'competitive-landscape': [40, 90],
+            'startup': [100, 160],
+            'team': [80, 140],
+            'market': [50, 100],
+            'valuechain': [15, 45]
+        };
         let skillInstalls = JSON.parse(localStorage.getItem('sench-skill-installs') || '{}');
 
         // Regenerate if empty or older than 1 hour
         const lastGen = localStorage.getItem('sench-installs-time') || 0;
         if (!skillInstalls['startup'] || (Date.now() - lastGen > 3600000)) {
-            skills.forEach(skill => {
-                skillInstalls[skill] = Math.floor(Math.random() * 151) + 10;
+            Object.entries(skillRanges).forEach(([skill, [min, max]]) => {
+                skillInstalls[skill] = Math.floor(Math.random() * (max - min + 1)) + min;
             });
             localStorage.setItem('sench-skill-installs', JSON.stringify(skillInstalls));
             localStorage.setItem('sench-installs-time', Date.now());
