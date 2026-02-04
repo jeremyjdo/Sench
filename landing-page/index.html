@@ -81,13 +81,48 @@
             margin-bottom: 3rem;
         }
 
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
         .logo {
             font-family: var(--font-mono);
             font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: -0.02em;
             color: var(--color-text);
-            margin-bottom: 0.5rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+        }
+
+        .lang-switch button {
+            background: none;
+            border: 1px solid var(--color-border);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--color-text-muted);
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            transition: all 0.15s;
+        }
+
+        .lang-switch button:hover {
+            border-color: var(--color-accent);
+            color: var(--color-text);
+        }
+
+        .lang-switch button.active {
+            background: var(--color-text);
+            border-color: var(--color-text);
+            color: #fff;
         }
 
         header .subtitle {
@@ -270,8 +305,14 @@
 <body>
     <div class="container">
         <header>
-<div class="logo">/sench</div>
-            <p class="subtitle">Startup Benchmark Intelligence Skills for AI Agents</p>
+            <div class="header-top">
+                <div class="logo">/sench</div>
+                <div class="lang-switch">
+                    <button class="active" onclick="setLang('en')">EN</button>
+                    <button onclick="setLang('fr')">FR</button>
+                </div>
+            </div>
+            <p class="subtitle" data-en="Startup Benchmark Intelligence Skills for AI Agents" data-fr="Skills d'intelligence concurrentielle pour agents IA">Startup Benchmark Intelligence Skills for AI Agents</p>
             <div class="meta">
                 <span class="badge">Claude Code</span>
                 <span class="badge">Codex</span>
@@ -282,11 +323,11 @@
 
         <hr>
 
-        <div class="section-title">Skills</div>
+        <div class="section-title" data-en="Skills" data-fr="Skills">Skills</div>
         <div class="skills">
             <a href="sench-competitive-landscape.html" class="skill-card">
                 <div class="skill-card-title"><span class="cmd">/sench-competitive-landscape</span></div>
-                <div class="skill-card-desc">Competitive landscape with dual focus: direct competition & international benchmarks.</div>
+                <div class="skill-card-desc" data-en="Competitive landscape with dual focus: direct competition & international benchmarks." data-fr="Paysage concurrentiel : concurrence directe & benchmarks internationaux.">Competitive landscape with dual focus: direct competition & international benchmarks.</div>
                 <div class="skill-modules">
                     <span class="module-tag">Structure</span>
                     <span class="module-tag">Players</span>
@@ -297,7 +338,7 @@
             </a>
             <a href="sench-startup.html" class="skill-card">
                 <div class="skill-card-title"><span class="cmd">/sench-startup</span></div>
-                <div class="skill-card-desc">Full competitive intelligence report on any startup.</div>
+                <div class="skill-card-desc" data-en="Full competitive intelligence report on any startup." data-fr="Rapport d'intelligence concurrentielle complet sur une startup.">Full competitive intelligence report on any startup.</div>
                 <div class="skill-modules">
                     <span class="module-tag">Funding</span>
                     <span class="module-tag">Team</span>
@@ -309,7 +350,7 @@
             </a>
             <a href="sench-team.html" class="skill-card">
                 <div class="skill-card-title"><span class="cmd">/sench-team</span></div>
-                <div class="skill-card-desc">Team structure and founder backgrounds.</div>
+                <div class="skill-card-desc" data-en="Team structure and founder backgrounds." data-fr="Structure d'équipe et parcours des fondateurs.">Team structure and founder backgrounds.</div>
                 <div class="skill-modules">
                     <span class="module-tag">Founders</span>
                     <span class="module-tag">Employees</span>
@@ -319,7 +360,7 @@
             </a>
             <a href="sench-market.html" class="skill-card">
                 <div class="skill-card-title"><span class="cmd">/sench-market</span></div>
-                <div class="skill-card-desc">Market definition & opportunity mapping for venture design.</div>
+                <div class="skill-card-desc" data-en="Market definition & opportunity mapping for venture design." data-fr="Définition de marché & cartographie d'opportunités.">Market definition & opportunity mapping for venture design.</div>
                 <div class="skill-modules">
                     <span class="module-tag">Definition</span>
                     <span class="module-tag">Opportunities</span>
@@ -330,7 +371,7 @@
             </a>
             <a href="sench-valuechain.html" class="skill-card">
                 <div class="skill-card-title"><span class="cmd">/sench-valuechain</span></div>
-                <div class="skill-card-desc">Value chain decomposition and analysis.</div>
+                <div class="skill-card-desc" data-en="Value chain decomposition and analysis." data-fr="Décomposition et analyse de chaîne de valeur.">Value chain decomposition and analysis.</div>
                 <div class="skill-modules">
                     <span class="module-tag">Chain Map</span>
                     <span class="module-tag">Actors</span>
@@ -343,11 +384,11 @@
 
         <hr>
 
-        <div class="section-title">Features</div>
+        <div class="section-title" data-en="Features" data-fr="Caractéristiques">Features</div>
         <div class="features">
-            <div class="feature-item"><strong>No API Keys</strong><span>Works with WebSearch and WebFetch only. No external tools required.</span></div>
-            <div class="feature-item"><strong>French Data</strong><span>Direct integration with API Recherche Entreprises (gouv.fr).</span></div>
-            <div class="feature-item"><strong>Single Output</strong><span>One markdown file per analysis. Clean and portable.</span></div>
+            <div class="feature-item"><strong data-en="No API Keys" data-fr="Sans API Keys">No API Keys</strong><span data-en="Works with WebSearch and WebFetch only. No external tools required." data-fr="Fonctionne avec WebSearch et WebFetch uniquement. Aucun outil externe requis.">Works with WebSearch and WebFetch only. No external tools required.</span></div>
+            <div class="feature-item"><strong data-en="French Data" data-fr="Données FR">French Data</strong><span data-en="Direct integration with API Recherche Entreprises (gouv.fr)." data-fr="Intégration directe avec l'API Recherche Entreprises (gouv.fr).">Direct integration with API Recherche Entreprises (gouv.fr).</span></div>
+            <div class="feature-item"><strong data-en="Single Output" data-fr="Sortie unique">Single Output</strong><span data-en="One markdown file per analysis. Clean and portable." data-fr="Un fichier markdown par analyse. Propre et portable.">One markdown file per analysis. Clean and portable.</span></div>
         </div>
 
         <footer>
@@ -355,5 +396,22 @@
             <a href="https://github.com/jeremyjdo/Sench/issues">Issues</a>
         </footer>
     </div>
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+            document.querySelectorAll('.lang-switch button').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('sench-lang', lang);
+        }
+
+        // Init from localStorage or browser preference
+        const savedLang = localStorage.getItem('sench-lang');
+        const browserLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+        setLang(savedLang || browserLang);
+    </script>
 </body>
 </html>
