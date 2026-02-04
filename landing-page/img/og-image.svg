@@ -1,5 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#000"/>
-  <text x="600" y="280" font-family="monospace" font-size="120" font-weight="bold" fill="#fff" text-anchor="middle">/sench</text>
-  <text x="600" y="380" font-family="sans-serif" font-size="32" fill="#888" text-anchor="middle">Competitive Intelligence for AI Agents</text>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#ffffff"/>
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Logo -->
+  <text x="80" y="120" font-family="SF Mono, Monaco, Consolas, monospace" font-size="48" font-weight="600" fill="#1a1a1a">/sench</text>
+
+  <!-- Tagline -->
+  <text x="80" y="180" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="24" fill="#6b7280">Competitive Intelligence Skills for AI Agents</text>
+
+  <!-- Skills cards -->
+  <rect x="80" y="240" width="320" height="70" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="100" y="280" font-family="SF Mono, Monaco, monospace" font-size="16" font-weight="600" fill="#1a1a1a">/sench-competitive-landscape</text>
+  <text x="100" y="300" font-family="Inter, sans-serif" font-size="12" fill="#6b7280">Market structure &amp; benchmarks</text>
+
+  <rect x="80" y="320" width="320" height="70" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="100" y="360" font-family="SF Mono, Monaco, monospace" font-size="16" font-weight="600" fill="#1a1a1a">/sench-startup</text>
+  <text x="100" y="380" font-family="Inter, sans-serif" font-size="12" fill="#6b7280">Full company intelligence report</text>
+
+  <rect x="80" y="400" width="320" height="70" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="100" y="440" font-family="SF Mono, Monaco, monospace" font-size="16" font-weight="600" fill="#1a1a1a">/sench-team</text>
+  <text x="100" y="460" font-family="Inter, sans-serif" font-size="12" fill="#6b7280">Founders &amp; team analysis</text>
+
+  <rect x="420" y="240" width="320" height="70" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="440" y="280" font-family="SF Mono, Monaco, monospace" font-size="16" font-weight="600" fill="#1a1a1a">/sench-market</text>
+  <text x="440" y="300" font-family="Inter, sans-serif" font-size="12" fill="#6b7280">Market opportunity mapping</text>
+
+  <rect x="420" y="320" width="320" height="70" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="440" y="360" font-family="SF Mono, Monaco, monospace" font-size="16" font-weight="600" fill="#1a1a1a">/sench-valuechain</text>
+  <text x="440" y="380" font-family="Inter, sans-serif" font-size="12" fill="#6b7280">Value chain decomposition</text>
+
+  <!-- Compatible platforms -->
+  <rect x="800" y="240" width="320" height="230" rx="12" fill="#1a1a1a"/>
+  <text x="830" y="285" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-transform="uppercase" letter-spacing="0.05em">Works with</text>
+
+  <rect x="830" y="310" width="120" height="32" rx="6" fill="#374151"/>
+  <text x="890" y="332" font-family="Inter, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">Claude Code</text>
+
+  <rect x="960" y="310" width="80" height="32" rx="6" fill="#374151"/>
+  <text x="1000" y="332" font-family="Inter, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">Codex</text>
+
+  <rect x="830" y="352" width="80" height="32" rx="6" fill="#374151"/>
+  <text x="870" y="374" font-family="Inter, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">Cursor</text>
+
+  <rect x="920" y="352" width="120" height="32" rx="6" fill="#374151"/>
+  <text x="980" y="374" font-family="Inter, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle">Mistral CLI</text>
+
+  <text x="830" y="430" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">No API keys required</text>
+  <text x="830" y="455" font-family="Inter, sans-serif" font-size="13" fill="#9ca3af">WebSearch + WebFetch only</text>
+
+  <!-- Bottom tagline -->
+  <text x="80" y="560" font-family="Inter, sans-serif" font-size="18" fill="#374151">Analyze startups, markets &amp; competitors in seconds</text>
+  <text x="80" y="590" font-family="Inter, sans-serif" font-size="14" fill="#9ca3af">sench.vercel.app</text>
+
+  <!-- Accent bar -->
+  <rect x="0" y="620" width="1200" height="10" fill="#1a1a1a"/>
 </svg>
