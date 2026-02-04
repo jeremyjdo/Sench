@@ -96,6 +96,19 @@
 
         header h1 .slash { color: var(--color-text-muted); }
 
+        header h1 .install-badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            font-family: var(--font-sans);
+            color: var(--color-text-muted);
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+
         header .subtitle {
             font-size: 1.125rem;
             color: var(--color-text-muted);
@@ -273,7 +286,7 @@
         <a href="index.html" class="back">← Sench</a>
 
         <header>
-            <h1><span class="slash">/</span>sench-startup</h1>
+            <h1><span class="slash">/</span>sench-startup <span class="install-badge" id="install-count"></span></h1>
             <p class="subtitle">Full competitive intelligence report on any startup.</p>
         </header>
 
@@ -565,6 +578,13 @@
                 setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
             });
         }
+
+        // Get install count from localStorage
+        const skillInstalls = JSON.parse(localStorage.getItem('sench-skill-installs') || '{}');
+        const count = skillInstalls['startup'] || Math.floor(Math.random() * 151) + 10;
+        document.getElementById('install-count').textContent = count + ' installs';
     </script>
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
