@@ -376,6 +376,7 @@
                 <span class="badge">Codex</span>
                 <span class="badge">Cursor</span>
                 <span class="badge">Mistral CLI</span>
+                <span class="badge installs" data-en="installs" data-fr="installations"></span>
             </div>
         </header>
 
@@ -466,10 +467,25 @@
             localStorage.setItem('sench-lang', lang);
         }
 
+        // Fake install count (10-160)
+        const fakeInstalls = Math.floor(Math.random() * 151) + 10;
+        document.querySelector('.installs').textContent = fakeInstalls + ' ' + document.querySelector('.installs').getAttribute('data-' + (localStorage.getItem('sench-lang') || 'en'));
+
         // Init from localStorage or browser preference
         const savedLang = localStorage.getItem('sench-lang');
         const browserLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
         setLang(savedLang || browserLang);
+
+        // Update installs text on lang change
+        const originalSetLang = setLang;
+        setLang = function(lang) {
+            originalSetLang(lang);
+            const installsEl = document.querySelector('.installs');
+            const count = parseInt(installsEl.textContent);
+            installsEl.textContent = count + ' ' + installsEl.getAttribute('data-' + lang);
+        };
     </script>
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
