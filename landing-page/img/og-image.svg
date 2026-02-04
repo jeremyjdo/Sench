@@ -14,7 +14,7 @@
   <text x="80" y="120" font-family="SF Mono, Monaco, Consolas, monospace" font-size="48" font-weight="600" fill="#1a1a1a">/sench</text>
 
   <!-- Tagline -->
-  <text x="80" y="180" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="24" fill="#6b7280">Competitive Intelligence Skills for AI Agents</text>
+  <text x="80" y="180" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="24" fill="#6b7280">Startup Benchmark Intelligence Skills for AI Agents</text>
 
   <!-- Skills cards -->
   <rect x="80" y="240" width="320" height="70" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
